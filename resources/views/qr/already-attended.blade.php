@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Already Checked In')
+@section('title', 'Sudah Check-in')
 
 @section('content')
 <div class="container py-5">
@@ -12,18 +12,18 @@
                         <i class="fas fa-exclamation-triangle fa-5x"></i>
                     </div>
                     
-                    <h2 class="text-warning mb-4">Already Checked In</h2>
+                    <h2 class="text-warning mb-4">Sudah Check-in</h2>
                     
                     <div class="alert alert-warning">
                         <h5>{{ $participant->name }}</h5>
                         <hr>
-                        <p class="mb-1">You have already checked in to <strong>{{ $participant->event->title }}</strong></p>
-                        <p class="mb-0"><strong>Previous Check-in:</strong> {{ $participant->attended_at->format('M d, Y g:i A') }}</p>
+                        <p class="mb-1">Anda sudah check-in untuk <strong>{{ $participant->event->title }}</strong></p>
+                        <p class="mb-0"><strong>Check-in Sebelumnya:</strong> {{ $participant->attended_at->format('j M Y H:i') }} WIB</p>
                     </div>
                     
                     <div class="mt-4">
                         <a href="{{ route('events.index') }}" class="btn btn-primary">
-                            <i class="fas fa-calendar"></i> View Other Events
+                            <i class="fas fa-calendar"></i> Lihat Event Lain
                         </a>
                     </div>
                 </div>

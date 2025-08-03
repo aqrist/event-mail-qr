@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
-@section('title', 'Events')
+@section('title', 'Event')
 
 @section('content')
 <div class="container py-5">
     <div class="row">
         <div class="col-12">
-            <h1 class="display-4 text-center mb-5">Upcoming Events</h1>
+            <h1 class="display-4 text-center mb-5">Event Mendatang</h1>
         </div>
     </div>
     
@@ -42,22 +42,22 @@
                                 </small>
                                 @if($event->capacity)
                                     <small class="text-muted">
-                                        {{ $event->available_slots }} slots left
+                                        {{ $event->available_slots }} slot tersisa
                                     </small>
                                 @endif
                             </div>
                             
                             @if($event->registration_open && !$event->is_full)
                                 <a href="{{ route('events.show', $event) }}" class="btn btn-primary w-100">
-                                    Register Now
+                                    Daftar Sekarang
                                 </a>
                             @elseif($event->is_full)
                                 <button class="btn btn-secondary w-100" disabled>
-                                    Event Full
+                                    Event Penuh
                                 </button>
                             @else
                                 <button class="btn btn-secondary w-100" disabled>
-                                    Registration Closed
+                                    Pendaftaran Ditutup
                                 </button>
                             @endif
                         </div>
@@ -68,8 +68,8 @@
             <div class="col-12 text-center">
                 <div class="py-5">
                     <i class="fas fa-calendar-times fa-4x text-muted mb-3"></i>
-                    <h3 class="text-muted">No events available</h3>
-                    <p class="text-muted">Check back later for upcoming events.</p>
+                    <h3 class="text-muted">Tidak ada event tersedia</h3>
+                    <p class="text-muted">Silakan cek kembali untuk event mendatang.</p>
                 </div>
             </div>
         @endforelse

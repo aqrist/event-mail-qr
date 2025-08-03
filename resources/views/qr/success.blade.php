@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Check-in Successful')
+@section('title', 'Check-in Berhasil')
 
 @section('content')
 <div class="container py-5">
@@ -12,19 +12,19 @@
                         <i class="fas fa-check-circle fa-5x"></i>
                     </div>
                     
-                    <h2 class="text-success mb-4">Check-in Successful!</h2>
+                    <h2 class="text-success mb-4">Check-in Berhasil!</h2>
                     
                     <div class="alert alert-success">
-                        <h5>Welcome to {{ $participant->event->title }}</h5>
+                        <h5>Selamat datang di {{ $participant->event->title }}</h5>
                         <hr>
-                        <p class="mb-1"><strong>Participant:</strong> {{ $participant->name }}</p>
+                        <p class="mb-1"><strong>Peserta:</strong> {{ $participant->name }}</p>
                         <p class="mb-1"><strong>Email:</strong> {{ $participant->email }}</p>
-                        <p class="mb-0"><strong>Check-in Time:</strong> {{ $participant->attended_at->format('M d, Y g:i A') }}</p>
+                        <p class="mb-0"><strong>Waktu Check-in:</strong> {{ $participant->attended_at->format('j M Y H:i') }} WIB</p>
                     </div>
                     
                     <div class="mt-4">
                         <a href="{{ route('events.index') }}" class="btn btn-primary">
-                            <i class="fas fa-calendar"></i> View Other Events
+                            <i class="fas fa-calendar"></i> Lihat Event Lain
                         </a>
                     </div>
                 </div>

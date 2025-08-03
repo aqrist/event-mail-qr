@@ -17,12 +17,12 @@
                     
                     <div class="row mt-4">
                         <div class="col-md-6">
-                            <h6><i class="fas fa-calendar text-primary"></i> Date & Time</h6>
-                            <p>{{ $event->start_date->format('l, F j, Y') }}<br>
-                               {{ $event->start_date->format('g:i A') }} - {{ $event->end_date->format('g:i A') }}</p>
+                            <h6><i class="fas fa-calendar text-primary"></i> Tanggal & Waktu</h6>
+                            <p>{{ $event->start_date->format('l, j F Y') }}<br>
+                               {{ $event->start_date->format('H:i') }} - {{ $event->end_date->format('H:i') }} WIB</p>
                         </div>
                         <div class="col-md-6">
-                            <h6><i class="fas fa-map-marker-alt text-primary"></i> Location</h6>
+                            <h6><i class="fas fa-map-marker-alt text-primary"></i> Lokasi</h6>
                             <p>{{ $event->location }}</p>
                         </div>
                     </div>
@@ -30,8 +30,8 @@
                     @if($event->capacity)
                         <div class="row">
                             <div class="col-md-6">
-                                <h6><i class="fas fa-users text-primary"></i> Capacity</h6>
-                                <p>{{ $event->participants()->count() }} / {{ $event->capacity }} registered</p>
+                                <h6><i class="fas fa-users text-primary"></i> Kapasitas</h6>
+                                <p>{{ $event->participants()->count() }} / {{ $event->capacity }} terdaftar</p>
                                 <div class="progress" style="height: 8px;">
                                     <div class="progress-bar" role="progressbar" 
                                          style="width: {{ ($event->participants()->count() / $event->capacity) * 100 }}%">
@@ -46,7 +46,7 @@
             <!-- Event Description -->
             <div class="card shadow-sm mb-4">
                 <div class="card-body">
-                    <h5 class="card-title">About This Event</h5>
+                    <h5 class="card-title">Tentang Event Ini</h5>
                     <div class="card-text">
                         {!! nl2br(e($event->description)) !!}
                     </div>
@@ -57,7 +57,7 @@
             @if($event->registration_open && !$event->is_full)
                 <div class="card shadow-sm">
                     <div class="card-body">
-                        <h5 class="card-title">Register for This Event</h5>
+                        <h5 class="card-title">Daftar untuk Event Ini</h5>
                         
                         @if($errors->any())
                             <div class="alert alert-danger">
@@ -74,13 +74,13 @@
                             
                             <div class="row">
                                 <div class="col-md-6 mb-3">
-                                    <label for="name" class="form-label">Full Name <span class="text-danger">*</span></label>
+                                    <label for="name" class="form-label">Nama Lengkap <span class="text-danger">*</span></label>
                                     <input type="text" class="form-control" id="name" name="name" 
                                            value="{{ old('name') }}" required>
                                 </div>
                                 
                                 <div class="col-md-6 mb-3">
-                                    <label for="email" class="form-label">Email Address <span class="text-danger">*</span></label>
+                                    <label for="email" class="form-label">Alamat Email <span class="text-danger">*</span></label>
                                     <input type="email" class="form-control" id="email" name="email" 
                                            value="{{ old('email') }}" required>
                                 </div>
@@ -88,7 +88,7 @@
                             
                             <div class="row">
                                 <div class="col-md-6 mb-3">
-                                    <label for="phone" class="form-label">Phone Number</label>
+                                    <label for="phone" class="form-label">Nomor Telepon</label>
                                     <input type="tel" class="form-control" id="phone" name="phone" 
                                            value="{{ old('phone') }}">
                                 </div>
@@ -122,7 +122,7 @@
                                                     id="custom_{{ $loop->index }}" 
                                                     name="custom_fields[{{ $field['name'] }}]"
                                                     {{ ($field['required'] ?? false) ? 'required' : '' }}>
-                                                <option value="">Select an option</option>
+                                                <option value="">Pilih opsi</option>
                                                 @foreach($field['options'] as $option)
                                                     <option value="{{ $option }}" 
                                                             {{ old('custom_fields.' . $field['name']) === $option ? 'selected' : '' }}>
@@ -136,7 +136,7 @@
                             @endif
                             
                             <button type="submit" class="btn btn-primary btn-lg w-100">
-                                Register for Event
+                                Daftar Event
                             </button>
                         </form>
                     </div>
@@ -144,15 +144,15 @@
             @elseif($event->is_full)
                 <div class="card shadow-sm">
                     <div class="card-body text-center">
-                        <h5 class="card-title text-warning">Event Full</h5>
-                        <p class="card-text">This event has reached its maximum capacity.</p>
+                        <h5 class="card-title text-warning">Event Penuh</h5>
+                        <p class="card-text">Event ini telah mencapai kapasitas maksimum.</p>
                     </div>
                 </div>
             @else
                 <div class="card shadow-sm">
                     <div class="card-body text-center">
-                        <h5 class="card-title text-secondary">Registration Closed</h5>
-                        <p class="card-text">Registration for this event is no longer available.</p>
+                        <h5 class="card-title text-secondary">Pendaftaran Ditutup</h5>
+                        <p class="card-text">Pendaftaran untuk event ini sudah tidak tersedia.</p>
                     </div>
                 </div>
             @endif

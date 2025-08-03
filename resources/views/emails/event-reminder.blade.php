@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Event Reminder</title>
+    <title>Pengingat Event</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -61,65 +61,65 @@
 </head>
 <body>
     <div class="header">
-        <h1>Event Reminder</h1>
-        <p>Don't forget about your upcoming event!</p>
+        <h1>Pengingat Event</h1>
+        <p>Jangan lupa tentang event Anda yang akan datang!</p>
     </div>
     
     <div class="content">
-        <h2>Hello {{ $participant->name }},</h2>
+        <h2>Halo {{ $participant->name }},</h2>
         
-        <p>This is a friendly reminder that you're registered for <strong>{{ $participant->event->title }}</strong>, which is happening soon!</p>
+        <p>Ini adalah pengingat ramah bahwa Anda telah terdaftar untuk <strong>{{ $participant->event->title }}</strong>, yang akan segera berlangsung!</p>
         
         <div class="countdown">
-            <h3 style="margin-top: 0; color: #856404;">⏰ Event starts in less than 24 hours!</h3>
+            <h3 style="margin-top: 0; color: #856404;">⏰ Event dimulai dalam kurang dari 24 jam!</h3>
             <p style="margin-bottom: 0; font-size: 18px; font-weight: bold;">
-                {{ $participant->event->start_date->format('l, F j, Y \a\t g:i A') }}
+                {{ $participant->event->start_date->format('l, j F Y \p\u\k\u\l H:i') }} WIB
             </p>
         </div>
         
         <div class="event-details">
-            <h3>Event Details</h3>
+            <h3>Detail Event</h3>
             <p><strong>Event:</strong> {{ $participant->event->title }}</p>
-            <p><strong>Date:</strong> {{ $participant->event->start_date->format('l, F j, Y') }}</p>
-            <p><strong>Time:</strong> {{ $participant->event->start_date->format('g:i A') }} - {{ $participant->event->end_date->format('g:i A') }}</p>
-            <p><strong>Location:</strong> {{ $participant->event->location }}</p>
+            <p><strong>Tanggal:</strong> {{ $participant->event->start_date->format('l, j F Y') }}</p>
+            <p><strong>Waktu:</strong> {{ $participant->event->start_date->format('H:i') }} - {{ $participant->event->end_date->format('H:i') }} WIB</p>
+            <p><strong>Lokasi:</strong> {{ $participant->event->location }}</p>
         </div>
         
-        <h3>Important Reminders</h3>
+        <h3>Pengingat Penting</h3>
         <ul>
-            <li><strong>Arrive early:</strong> Please arrive 15 minutes before the event starts</li>
-            <li><strong>Bring your ticket:</strong> You'll need your QR code for check-in</li>
-            <li><strong>Check traffic:</strong> Plan your route and allow extra time for travel</li>
+            <li><strong>Tiba lebih awal:</strong> Harap tiba 15 menit sebelum event dimulai</li>
+            <li><strong>Bawa tiket Anda:</strong> Anda memerlukan kode QR untuk check-in</li>
+            <li><strong>Periksa lalu lintas:</strong> Rencanakan rute dan beri waktu ekstra untuk perjalanan</li>
             @if($participant->phone)
-                <li><strong>Contact info:</strong> Keep your phone handy in case we need to reach you</li>
+                <li><strong>Info kontak:</strong> Siapkan telepon Anda jika kami perlu menghubungi Anda</li>
             @endif
         </ul>
         
         <div style="text-align: center; margin: 30px 0;">
             <a href="{{ route('ticket.show', $participant->qr_code) }}" class="btn">
-                View Your Ticket
+                Lihat Tiket Anda
             </a>
         </div>
         
         @if(!$participant->is_attended)
             <div style="background-color: #d1ecf1; border: 1px solid #bee5eb; border-radius: 4px; padding: 15px; margin: 20px 0;">
                 <p style="margin: 0; color: #0c5460;">
-                    <strong>Quick Check-in:</strong> Save time at the event by having your QR code ready on your phone or printed out.
+                    <strong>Check-in Cepat:</strong> Hemat waktu di event dengan menyiapkan kode QR Anda di ponsel atau sudah dicetak.
                 </p>
             </div>
         @endif
         
-        <p>We're excited to see you at the event!</p>
+        <p>Kami sangat menantikan kehadiran Anda di event!</p>
         
-        <p>If you can no longer attend or have any questions, please let us know as soon as possible.</p>
+        <p>Jika Anda tidak bisa hadir atau memiliki pertanyaan, mohon beritahu kami sesegera mungkin.</p>
         
-        <p>Best regards,<br>
-        The {{ config('app.name') }} Team</p>
+        <p>Salam hormat,<br>
+        Tim {{ config('app.name') }}</p>
     </div>
     
     <div class="footer">
-        <p>This is an automated reminder. Please do not reply to this email.</p>
-        <p>&copy; {{ date('Y') }} {{ config('app.name') }}. All rights reserved.</p>
+        <p>Ini adalah pengingat otomatis. Mohon jangan membalas email ini.</p>
+        <p>&copy; {{ date('Y') }} {{ config('app.name') }}. Hak cipta dilindungi.</p>
     </div>
 </body>
 </html>

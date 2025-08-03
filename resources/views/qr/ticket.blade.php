@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Your Ticket')
+@section('title', 'Tiket Anda')
 
 @section('content')
 <div class="container py-5">
@@ -8,7 +8,7 @@
         <div class="col-md-6">
             <div class="card shadow-lg">
                 <div class="card-header bg-primary text-white text-center">
-                    <h4 class="mb-0">Event Ticket</h4>
+                    <h4 class="mb-0">Tiket Event</h4>
                 </div>
                 
                 <div class="card-body text-center">
@@ -23,7 +23,7 @@
                     
                     <div class="row text-start">
                         <div class="col-6">
-                            <strong>Name:</strong><br>
+                            <strong>Nama:</strong><br>
                             {{ $participant->name }}
                         </div>
                         <div class="col-6">
@@ -36,39 +36,39 @@
                     
                     <div class="row text-start">
                         <div class="col-6">
-                            <strong>Date:</strong><br>
-                            {{ $participant->event->start_date->format('M d, Y') }}
+                            <strong>Tanggal:</strong><br>
+                            {{ $participant->event->start_date->format('j M Y') }}
                         </div>
                         <div class="col-6">
-                            <strong>Time:</strong><br>
-                            {{ $participant->event->start_date->format('g:i A') }}
+                            <strong>Waktu:</strong><br>
+                            {{ $participant->event->start_date->format('H:i') }} WIB
                         </div>
                     </div>
                     
                     <div class="mt-3 text-start">
-                        <strong>Location:</strong><br>
+                        <strong>Lokasi:</strong><br>
                         {{ $participant->event->location }}
                     </div>
                     
                     @if($participant->is_attended)
                         <div class="alert alert-success mt-3">
                             <i class="fas fa-check-circle"></i> 
-                            You have checked in at {{ $participant->attended_at->format('M d, Y g:i A') }}
+                            Anda telah check-in pada {{ $participant->attended_at->format('j M Y H:i') }} WIB
                         </div>
                     @else
                         <div class="alert alert-info mt-3">
                             <i class="fas fa-info-circle"></i> 
-                            Present this QR code at the event for check-in
+                            Tunjukkan kode QR ini di event untuk check-in
                         </div>
                     @endif
                 </div>
                 
                 <div class="card-footer text-center">
                     <button onclick="window.print()" class="btn btn-outline-primary">
-                        <i class="fas fa-print"></i> Print Ticket
+                        <i class="fas fa-print"></i> Cetak Tiket
                     </button>
                     <button onclick="downloadQR()" class="btn btn-outline-secondary">
-                        <i class="fas fa-download"></i> Download QR
+                        <i class="fas fa-download"></i> Unduh QR
                     </button>
                 </div>
             </div>

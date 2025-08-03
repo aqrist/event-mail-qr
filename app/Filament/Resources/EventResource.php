@@ -24,32 +24,43 @@ class EventResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('title')
+                    ->label('Judul')
                     ->required()
                     ->maxLength(255),
                 Forms\Components\Textarea::make('description')
+                    ->label('Deskripsi')
                     ->required()
                     ->rows(3),
                 Forms\Components\DateTimePicker::make('start_date')
+                    ->label('Tanggal Mulai')
                     ->required(),
                 Forms\Components\DateTimePicker::make('end_date')
+                    ->label('Tanggal Selesai')
                     ->required()
                     ->after('start_date'),
                 Forms\Components\TextInput::make('location')
+                    ->label('Lokasi')
                     ->required()
                     ->maxLength(255),
                 Forms\Components\FileUpload::make('image')
+                    ->label('Gambar')
                     ->image()
                     ->directory('event-images'),
                 Forms\Components\TextInput::make('capacity')
+                    ->label('Kapasitas')
                     ->numeric()
                     ->minValue(1),
-                Forms\Components\DateTimePicker::make('registration_deadline'),
+                Forms\Components\DateTimePicker::make('registration_deadline')
+                    ->label('Batas Pendaftaran'),
                 Forms\Components\Toggle::make('is_active')
+                    ->label('Aktif')
                     ->default(true),
                 Forms\Components\Toggle::make('registration_open')
+                    ->label('Pendaftaran Terbuka')
                     ->default(true),
                 Forms\Components\Textarea::make('custom_fields')
-                    ->helperText('JSON format for custom registration fields')
+                    ->label('Field Kustom')
+                    ->helperText('Format JSON untuk field pendaftaran kustom')
                     ->rows(3),
             ]);
     }
@@ -59,19 +70,24 @@ class EventResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('title')
+                    ->label('Judul')
                     ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('start_date')
+                    ->label('Tanggal Mulai')
                     ->dateTime()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('location')
+                    ->label('Lokasi')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('participants_count')
                     ->counts('participants')
-                    ->label('Participants'),
+                    ->label('Peserta'),
                 Tables\Columns\IconColumn::make('is_active')
+                    ->label('Aktif')
                     ->boolean(),
                 Tables\Columns\IconColumn::make('registration_open')
+                    ->label('Pendaftaran Terbuka')
                     ->boolean(),
             ])
             ->filters([
