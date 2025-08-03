@@ -16,61 +16,61 @@ class ParticipantSeeder extends Seeder
         $participants = [
             [
                 'name' => 'Ahmad Rizki',
-                'email' => 'ahmad.rizki@example.com',
+                'email' => 'ahmad.rizki@tridi.com',
                 'phone' => '+62812345678',
                 'email_sent' => true,
             ],
             [
                 'name' => 'Sari Dewi',
-                'email' => 'sari.dewi@example.com',
+                'email' => 'sari.dewi@tridi.com',
                 'phone' => '+62823456789',
                 'email_sent' => true,
             ],
             [
                 'name' => 'Budi Prasetyo',
-                'email' => 'budi.prasetyo@example.com',
+                'email' => 'budi.prasetyo@tridi.com',
                 'phone' => '+62834567890',
                 'email_sent' => true,
             ],
             [
                 'name' => 'Indira Sari',
-                'email' => 'indira.sari@example.com',
+                'email' => 'indira.sari@tridi.com',
                 'phone' => '+62845678901',
                 'email_sent' => true,
             ],
             [
                 'name' => 'Fajar Nugroho',
-                'email' => 'fajar.nugroho@example.com',
+                'email' => 'fajar.nugroho@tridi.com',
                 'phone' => '+62856789012',
                 'email_sent' => true,
             ],
             [
                 'name' => 'Rina Maharani',
-                'email' => 'rina.maharani@example.com',
+                'email' => 'rina.maharani@tridi.com',
                 'phone' => '+62867890123',
                 'email_sent' => true,
             ],
             [
                 'name' => 'Dani Setiawan',
-                'email' => 'dani.setiawan@example.com',
+                'email' => 'dani.setiawan@tridi.com',
                 'phone' => '+62878901234',
                 'email_sent' => true,
             ],
             [
                 'name' => 'Maya Kusuma',
-                'email' => 'maya.kusuma@example.com',
+                'email' => 'maya.kusuma@tridi.com',
                 'phone' => '+62889012345',
                 'email_sent' => true,
             ],
             [
                 'name' => 'Eko Wijaya',
-                'email' => 'eko.wijaya@example.com',
+                'email' => 'eko.wijaya@tridi.com',
                 'phone' => '+62890123456',
                 'email_sent' => true,
             ],
             [
                 'name' => 'Lestari Putri',
-                'email' => 'lestari.putri@example.com',
+                'email' => 'lestari.putri@tridi.com',
                 'phone' => '+62901234567',
                 'email_sent' => true,
             ]
@@ -89,7 +89,7 @@ class ParticipantSeeder extends Seeder
                 $participantData = $participants[$i % count($participants)];
                 
                 // Make email unique by adding event ID and index
-                $participantData['email'] = "participant{$i}.event{$event->id}@example.com";
+                $participantData['email'] = "participant{$i}.event{$event->id}@tridi.com";
                 $participantData['event_id'] = $event->id;
                 
                 // Add custom field data based on event

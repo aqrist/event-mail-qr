@@ -14,7 +14,7 @@ class UserSeeder extends Seeder
         // Create admin user for accessing Filament panel
         User::create([
             'name' => 'Administrator',
-            'email' => 'admin@example.com',
+            'email' => 'admin@tridi.com',
             'password' => Hash::make('password'),
             'email_verified_at' => now(),
         ]);
@@ -22,14 +22,14 @@ class UserSeeder extends Seeder
         // Create additional users for testing
         User::create([
             'name' => 'Manajer Event',
-            'email' => 'manager@example.com',
+            'email' => 'manager@tridi.com',
             'password' => Hash::make('password'),
             'email_verified_at' => now(),
         ]);
 
         User::create([
             'name' => 'Staff',
-            'email' => 'staff@example.com',
+            'email' => 'staff@tridi.com',
             'password' => Hash::make('password'),
             'email_verified_at' => now(),
         ]);
