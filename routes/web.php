@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\QRController;
 use App\Http\Controllers\TutorialController;
+use App\Http\Controllers\ScannerController;
 
 Route::get('/', [EventController::class, 'index']);
 Route::get('/events', [EventController::class, 'index'])->name('events.index');
@@ -15,3 +16,4 @@ Route::get('/attendance/scan/{qrCode}', [QRController::class, 'scanQR'])->name('
 Route::get('/ticket/{qrCode}', [QRController::class, 'showQRTicket'])->name('ticket.show');
 
 Route::get('/tutorial', [TutorialController::class, 'index'])->name('tutorial.index');
+Route::get('/scanner', [ScannerController::class, 'index'])->name('scanner.index');
